@@ -1,0 +1,32 @@
+.nav-li-menu{
+    font-size: .85rem;
+    font-weight: 600;
+    line-height: 1.2rem;
+    cursor: pointer;
+}
+@media only screen and (max-width: 480px){
+    .center-cl-nav,
+    .right-cl-nav{
+        display: none;
+    }
+    .left-cl-nav img{
+        width: 151px !important;
+    }
+    .image_content_value h1,
+    .image_content_value span{
+        font-size: 2rem !important;
+    }
+    .image_slide_main{
+        height: 55% !important;
+      }
+    .image_1_image img{
+        object-fit :fill !important;
+    }
+    .carousel-indicators button{
+        width: 1rem !important;
+    }
+    .carousel-control-prev,
+    .carousel-control-next{
+        display: none;
+    }
+}

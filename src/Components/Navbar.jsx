@@ -6,18 +6,17 @@ function Navbar() {
     window.addEventListener('scroll', function () {
         if (window.scrollY > 300) {
             setScrollingactive("header scrolling_active")
-            setLogoWidth("180px")
+            setLogoWidth("160px")
         }
         else {
             setScrollingactive("header")
             setLogoWidth("260px")
         }
-
     })
     return (
         <>
             <header className={scrollingactive}>
-                <nav className="navbar p-3 container flex items-center justify-between m-auto">
+                <nav className="navbar p-3 container-sm flex items-center justify-between m-auto">
                     <div className="nav-cont flex items-center gap-4">
                         <div className="left-cl-nav">
                             <a href="#" >

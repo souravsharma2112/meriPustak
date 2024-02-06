@@ -19,7 +19,8 @@
   --primary-color : #0f0f26;
   --secondary-color : #3a58fd;
   --white : #ffffff;
-  --dark : #000000e8;
+  /* --dark : #000000e8; */
+  --dark : #0a0909eb;
   --box-shadow : #64646f33;
   --gray : #3f3d3d;
 }
@@ -31,7 +32,11 @@
 
 body{
   font-family: 'Poppins', sans-serif;
-  height: 200vh;
+
+}
+
+a:hover{
+  color: var(--secondary-color);
 }
 
 .m-container{
@@ -132,7 +137,6 @@ body{
   height: 100%;
   z-index: 100;
   display: flex;
-  transform: matrix3d(2);
   align-items: center;
 }
 .image_content h1{
@@ -202,10 +206,10 @@ body{
   animation: shadowcome 5s forwards;
 }
 @keyframes shadowcome {
-  25%{background:#00000017;}
-  50%{background: #0000005b;}
-  75%{background: #0000008a;}
-  100%{background: #00000017;}
+  25%{background:#00000018;}
+  50%{background: #0000001c;}
+  75%{background: #0000004f;}
+  100%{background: #00000079;}
 }
 .card:hover > .card-body{
   visibility: visible;
@@ -221,6 +225,37 @@ body{
   background: var(--secondary-color);
   color: var(--white);
 }
+
+.book-intro h1{
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gray);
+}
+.book-conatiner{
+  position: relative;
+}
+.badge{
+  position: absolute;
+  top: 0%;
+  z-index: 2;
+  /* background: var(--secondary-color) !important; */
+}
+.badge2{
+  right: 0% !important;
+}
+.book-price :nth-child(1){
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--secondary-color);
+}
+.book-price :nth-child(2){
+  font-size: .9rem;
+  font-weight: 700;
+  text-decoration: line-through;
+  text-decoration-color: var(--gray);
+  color: var(--gray);
+}
+
 
 /* ================ section2 ============ */
 .section2{
@@ -273,4 +308,14 @@ body{
 }
 .new-product-nav li:hover{
   color: var(--secondary-color);
+}
+
+
+
+/* footer */
+
+.footer{
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 3rem 0rem;
 }

@@ -1,0 +1,35 @@
+// const callApi = () => {
+    //     const xhr = new XMLHttpRequest();
+    //     xhr.open('GET', horse)
+    //     xhr.onreadystatechange = function () {
+    //         console.log(xhr.readyState);
+    //         if (xhr.readyState === 4) {
+    //             let myApi = this.response;
+    //             // console.log(myApi);
+    //             let mynewApi = JSON.parse(myApi)
+    //             // setMyApi(mynewApi);
+    //             // console.log(mynewApi);
+    //             console.log(mynewApi.items[0].volumeInfo.title)
+    //             return mynewApi
+    //         }
+    //     }
+    //     xhr.send()
+    // }
+
+
+    // const callingApi = (api) => {
+    //     fetch(api)
+    //     .then((response)=>{
+    //         if (!response) {
+    //             throw new Error("This  is error")
+    //         }
+    //         return response
+    //     })
+    //     .then((data)=>{
+    //         console.log(data.json());
+    //         return data.json()
+    //     })
+    //     .catch((err)=>{
+    //         console.log(err);
+    //     })
+    // }

@@ -1,21 +1,21 @@
 import { useState } from "react";
 import logoImg from "../assets/img/2112.png"
 function Navbar() {
-    const [scrollingactive, setScrollingactive] = useState("header")
+    const [scrollingactive, setScrollingactive] = useState("")
     const [logoWidth, setLogoWidth] = useState("250px")
     window.addEventListener('scroll', function () {
         if (window.scrollY > 300) {
-            setScrollingactive("header scrolling_active")
+            setScrollingactive("scrolling_active")
             setLogoWidth("160px")
         }
         else {
-            setScrollingactive("header")
+            setScrollingactive("")
             setLogoWidth("260px")
         }
     })
     return (
         <>
-            <header className={scrollingactive}>
+            <header className={`header ${scrollingactive}`}>
                 <nav className="navbar p-3 container-sm flex items-center justify-between m-auto">
                     <div className="nav-cont flex items-center gap-4">
                         <div className="left-cl-nav">

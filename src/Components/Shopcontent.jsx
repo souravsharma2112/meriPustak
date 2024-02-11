@@ -3,8 +3,9 @@ import loader from "../assets/img/loader.gif"
 import { useGlobleContext } from "./AppContex";
 
 function Shopcontent() {
-    const { items , isLoading } = useGlobleContext()
-    console.log(items);
+    const { items, isLoading, query, searchPost } = useGlobleContext()
+    const itemNew = [];
+    itemNew.push(items)
     if (isLoading) {
         return <>
             <div className="loader flex flex-col justify-center align-items-center p-4">
@@ -15,7 +16,7 @@ function Shopcontent() {
     }
     return (
         <>
-            <div className="container-md mt-5 mb-5">
+            <div className="shopcontent container-md mt-5 mb-5">
                 <div className="shop-content-container ">
                     <div className="shop-grid-left mr-6">
                         <div className="shop-left-content">
@@ -51,11 +52,11 @@ function Shopcontent() {
                     <div className="shop-grid-right ">
                         <div className="shop-grid-right-menu flex justify-between justify-center">
                             <div className="shop-grid-right-menu-1 flex gap-2">
-                                <a href="#">
+                                {/* <a href="#">
                                     <span className="material-symbols-outlined">
                                         apps
                                     </span>
-                                </a>
+                                </a> */}
                                 <a href="#">
                                     <span className="material-symbols-outlined">
                                         list
@@ -63,34 +64,65 @@ function Shopcontent() {
                                 </a>
                             </div>
                             <div className="shop-grid-right-menu-1">
-                                <h1>Showing 1–12 of 40 results</h1>
+                                <h1>Showing 40 results</h1>
                             </div>
-                            <div className="shop-grid-right-menu-1 flex gap-2 justify-center">
+                            {/* <div className="shop-grid-right-menu-1 flex gap-2 justify-center">
                                 <h1>Sort By</h1>
                                 <select name="gridSortFilter" id="gridShotFilter">
                                     <option value="gridSortFilter">Heleo</option>
                                 </select>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="searchbar flex justify-end mt-3">
                             <div className="searchbox">
-                                <input type="text"/>
+                                <input
+                                    onChange={(e) => {
+                                        if (e.target.value == "") {
+                                            return searchPost("trending")
+                                        }
+                                        else {
+                                            return searchPost(e.target.value)
+                                        }
+                                    }}                                  
+                                    placeholder={query}
+                                    type="text" />
                                 <button>Search</button>
                             </div>
                         </div>
                         <div className="book-self mt-4">
                             {
-                                items.map((index,value) => {
+                                itemNew[0].map((index, value) => {
                                     let discount = Math.floor((Math.random() * 50) + 1);
                                     let price = Math.floor((Math.random() * 1550) + 1);
-                                    let falsePrice = Math.floor(price + (discount/100)*price);
-                                    const bookContent ={
-                                        bookName : items[value].volumeInfo.title,
-                                        bookImg : items[value].volumeInfo.imageLinks.thumbnail
+                                    let falsePrice = Math.floor(price + (discount / 100) * price);
+                                    const isVolumeInfoAvailable = 'volumeInfo' in itemNew[0][value]
+                                    const isImageLinksAvailable = 'imageLinks' in itemNew[0][value].volumeInfo
+                                    if (!isVolumeInfoAvailable) {
+                                        itemNew[0][value].volumeInfo = {
+                                            title: "Unknown",
+                                            imageLinks: {
+                                                thumbnail: "https://books.google.com/books/content?id=BIopDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
+                                            }
+                                        }
+                                    }
+                                    else {
+                                        if (!isImageLinksAvailable) {
+                                            itemNew[0][value].volumeInfo.imageLinks = {
+                                                thumbnail: "https://books.google.com/books/content?id=BIopDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
+                                            }
+                                        }
+                                    }
+                                    const bookContent = {
+                                        bookName: itemNew[0][value].volumeInfo.title,
+                                        bookId: itemNew[0][value].id,
+                                        bookImg: itemNew[0][value].volumeInfo.imageLinks.thumbnail,
+                                        price: price,
+                                        falsePrice: falsePrice,
+                                        discount: discount
                                     }
 
                                     return <>
-                                        <Bookbox bookContent = {bookContent} discount = {discount} price = {price} falsePrice = {falsePrice}/>
+                                        <Bookbox bookContent={bookContent} />
                                     </>
                                 })
                             }

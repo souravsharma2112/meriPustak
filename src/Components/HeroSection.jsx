@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import image1 from "../assets/img/1.jpg";
 import image2 from "../assets/img/3.jpg";
 import image3 from "../assets/img/4.jpg";
@@ -23,12 +24,12 @@ function HeroSection() {
                             <div className="image_content">
                                 <div className="image_content_value">
                                     <h1>Welcome to <br /><span>meriPustak</span></h1>
-                                    <a href="#">
+                                    <Link to="/shop">
                                         Shop Now
                                         <span className="material-symbols-outlined span_icon">
                                             trending_flat
                                         </span>
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -42,12 +43,12 @@ function HeroSection() {
                                         favourite <span>Book</span><br />
                                         From <span>Here</span>
                                     </h1>
-                                    <a href="#">
+                                    <Link to="/shop">
                                         Shop Now
                                         <span className="material-symbols-outlined span_icon">
                                             trending_flat
                                         </span>
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -58,12 +59,12 @@ function HeroSection() {
                             <div className="image_content">
                                 <div className="image_content_value">
                                     <h1> {"Let's"} Go! See <br /><span>what’s in story?</span></h1>
-                                    <a href="#">
+                                    <Link to="/shop">
                                         Shop Now
                                         <span className="material-symbols-outlined span_icon">
                                             trending_flat
                                         </span>
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

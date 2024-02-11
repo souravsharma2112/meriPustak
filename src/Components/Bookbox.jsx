@@ -1,12 +1,12 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import React from "react";
 
 function Bookbox(props) {
-
     return (
-        <>
-            <div className="book-conatiner">
+            <div className="book-conatiner" key={props.bookContent.bookId}>
                 {/* <span className="badge rounded-pill text-bg-primary">Primary</span> */}
-                <span className="badge badge2 text-bg-danger">{props.discount}%</span>
+                <span className="badge badge2 text-bg-danger">{props.bookContent.discount}%</span>
                 <div className="card">
                     <img src={props.bookContent.bookImg} className="card-img-top" alt="..." />
                     <div className="card-body">
@@ -33,11 +33,10 @@ function Bookbox(props) {
                     <h1>{props.bookContent.bookName}</h1>
                 </div>
                 <div className="book-price flex gap-3 pt-2 items-center justify-center">
-                    <h1>₹ {props.price}</h1>
-                    <h1 className='false-price'>₹ {props.falsePrice}</h1>
+                    <h1>₹ {props.bookContent.price}</h1>
+                    <h1 className='false-price'>₹ {props.bookContent.falsePrice}</h1>
                 </div>
             </div>
-        </>
     )
 }
 export default Bookbox;

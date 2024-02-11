@@ -1,21 +1,25 @@
-import Box from "./Box"
+// import { useState } from 'react';
+import { useRef } from 'react';
 import subscribe from '../assets/img/2.jpg'
-import logo from "../assets/img/2112.png"
+import Product from "./Product";
+
 
 function Section() {
+    // const [booksContent , setBooksContent] = useState("");
+    const ref = useRef()
+    const getValue = () => {
+        console.log(ref.this.current)
+    }
     return (
         <>
             <div className="section1 pt-4">
                 <div className="container-sm m-auto section p-4">
                     <div className="product_content">
                         <h1>New <span>Products</span></h1>
-                        <p className="text-center pt-4 text-sm">There are many variations of passages of Lorem Ipsum available, but the majority have <br /> suffered lebmid alteration in some ledmid form</p>
+                        <p className="text-center pt-4 text-sm">There are many variations of passages of Lorem Ipsum available, but the majority have suffered lebmid alteration in some ledmid form</p>
                     </div>
-                    <div className="book_self flex gap-3 mt-5">
-                        <Box />
-                        <Box />
-                        <Box />
-                        <Box />
+                    <div className="book_self mt-5">
+                       <Product/>
                     </div>
                 </div>
             </div>
@@ -44,15 +48,16 @@ function Section() {
                 <div className="container-sm m-auto section p-4">
                     <div className="product_content">
                         <h1>All <span>Products</span></h1>
-                        <p className="text-center pt-4 text-sm">There are many variations of passages of Lorem Ipsum available, but the majority have <br /> suffered lebmid alteration in some ledmid form</p>
+                        <p className="text-center cs pt-4 text-sm">There are many variations of passages of Lorem Ipsum available, but the majority have suffered lebmid alteration in some ledmid form</p>
                     </div>
                     <div className="new-product-nav mt-5">
                         <ul className="flex gap-8 justify-center">
                             <li className="nav-li-menu">
-                                <a href="#">ALL</a>
+                                <button id="ALL" ref={ref} onClick={getValue}
+                                    href="#">ALL</button>
                             </li>
                             <li className="nav-li-menu">
-                                <a href="#">BIOGRAPHIC</a>
+                                <button ref={ref} onClick={getValue}>BIOGRAPHIC</button>
                             </li>
                             <li className="nav-li-menu">
                                 <a href="#">ADVENTURE</a>
@@ -66,23 +71,7 @@ function Section() {
                         </ul>
                     </div>
                     <div className="book_self flex gap-3 mt-5">
-                        <Box />
-                        <Box />
-                        <Box />
-                        <Box />
-                    </div>
-                </div>
-            </div>
-            <div className="section1 pt-4">
-                <div className="container-sm m-auto section p-4">
-                    <div className="product_content">
-                        <div className="logo flex justify-center">
-                        <img width="280px" src={logo} alt="" />
-                        </div>
-                        <p className="text-center pt-4 text-sm">There are many variations of passages of Lorem Ipsum available, but the majority have <br /> suffered lebmid alteration in some ledmid form</p>
-                    </div>
-                    <div className="new-product-nav mt-5 text-center">
-                        <h1 className="">All &copy; Reserved 2024.</h1>
+                        <Product/>
                     </div>
                 </div>
             </div>

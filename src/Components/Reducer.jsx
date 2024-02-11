@@ -7,6 +7,18 @@ const Reducer = (state , action) =>{
                 isLoading : action.payload.isLoading
             }
         }
+        case "search_QUERY":{
+            return{
+                ...state,
+                query: action.payload
+            }
+        }
+        case "search_QUERY2":{
+            return{
+                ...state,
+                query: action.payload
+            }
+        }
     }
     return state
 }

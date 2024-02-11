@@ -1,0 +1,17 @@
+.mydiv{
+    width: 250px;
+    height: 370px;
+}
+.mydiv .book-conatiner{
+    width: 100%;
+    height: 100%;
+}
+.mydiv .book-conatiner img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.mydiv .book-conatiner .book-intro,
+.mydiv .book-conatiner .book-price {
+    display: none;
+}

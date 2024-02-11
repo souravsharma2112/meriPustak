@@ -3,11 +3,11 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import 'font-awesome/css/font-awesome.min.css';
 const Footer = () => {
     return <>
-    <div className="footer flex justify-center">
-    <div className="container-md flex flex-column justify-center align-items-center ">
-            <div className="footer-logo">
-                <img src={logo} alt="" />
-            </div>
+        <div className="footer">
+            <div className="container-md">
+                <div className="footer-logo">
+                    <img src={logo} alt="" />
+                </div>
             <div className="footer-content p-5">
                 <p className="text-center">
                 There are many variations of passages of Lorem Ipsum available, but the majority have <br /> suffered duskam alteration variations of passages

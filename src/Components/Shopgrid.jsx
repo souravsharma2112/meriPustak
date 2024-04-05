@@ -1,6 +1,7 @@
 import shopImg from "../assets/img/6.jpg"
 
-function Shopgrid(){
+// eslint-disable-next-line react/prop-types
+function Shopgrid({title , text}){
     return(
         <>
             <div className="shop-container">
@@ -9,8 +10,8 @@ function Shopgrid(){
                         <img src={shopImg} alt="" />
                     </div>
                     <div className="hero-content text-center">
-                        <h1>Shop</h1>
-                        <p>Everything is temporary but learning is permanent.</p>
+                        <h1>{title}</h1>
+                        <p>{text}</p>
                     </div>
                 </div>
             </div>

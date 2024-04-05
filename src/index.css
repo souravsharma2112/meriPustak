@@ -111,6 +111,7 @@ a:hover{
 
 .mobile-cl-nav{
   display: none;
+  padding-right: 1rem;
 }
 
 .hamburger{
@@ -353,7 +354,15 @@ a:hover{
   color: var(--secondary-color);
 }
 
-
+.card-body ul li button{
+  padding: .6rem;
+  border-radius: 50%;
+  background-color: #3a58fd;
+}
+.card-body ul li button:hover{
+  color: #3a58fd;
+  background-color: #b0ceff;
+}
 
 /* footer */
 

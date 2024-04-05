@@ -1,10 +1,17 @@
 import Bookbox from "./Bookbox";
 import loader from "../assets/img/loader.gif"
 import { useGlobleContext } from "./AppContex";
+import { useEffect } from "react";
 
-function Shopcontent() {
+// eslint-disable-next-line react/prop-types
+function Shopcontent({ dimand }) {
     const { items, isLoading, query, searchPost } = useGlobleContext()
+    const categories = ["Action", "Drama", "Romance", "Horror", "Sci-Fi", "Robitics", "Maths", "Science", "Erotic", "Thriller", "Night Story", "Poetry"]
     const itemNew = [];
+    useEffect(() => {
+        searchPost(dimand)
+    },
+        [])
     itemNew.push(items)
     if (isLoading) {
         return <>
@@ -18,33 +25,27 @@ function Shopcontent() {
         <>
             <div className="shopcontent container-md mt-5 mb-5">
                 <div className="shop-content-container ">
-                    <div className="shop-grid-left mr-6">
+                    <div className={"shop-grid-left mr-6"}>
                         <div className="shop-left-content">
                             <div className="categories-desc">
                                 <h1>PRODUCT CATEGORIES</h1>
                             </div>
                             <div className="categories-menu mt-4">
                                 <ul className="flex flex-col gap-6">
-                                    <li className="categories-menu-li">
-                                        <a href="#">
-                                            <div className="meta-content flex justify-between">
-                                                <h1>Action</h1>
-                                                <p>(3)</p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li className="categories-menu-li">
-                                        <div className="meta-content flex justify-between">
-                                            <a href="#">Biography</a>
-                                            <p>(3)</p>
-                                        </div>
-                                    </li>
-                                    <li className="categories-menu-li">
-                                        <div className="meta-content flex justify-between">
-                                            <a href="#">Biography</a>
-                                            <p>(3)</p>
-                                        </div>
-                                    </li>
+                                    {
+                                        categories.map((item , index) => {
+                                            return (
+                                                <>
+                                                    <li key={index} className="categories-menu-li">
+                                                        <div onClick={() => { searchPost(item) }} className="meta-content flex justify-between">
+                                                            <h1>{item}</h1>
+                                                            <p>(40)</p>
+                                                        </div>
+                                                    </li>
+                                                </>
+                                            )
+                                        })
+                                    }
                                 </ul>
                             </div>
                         </div>
@@ -58,7 +59,9 @@ function Shopcontent() {
                                     </span>
                                 </a> */}
                                 <a href="#">
-                                    <span className="material-symbols-outlined">
+                                    <span onClick={()=>{
+                                        alert("Kya Bakcodi hai!")
+                                    }} className="material-symbols-outlined">
                                         list
                                     </span>
                                 </a>
@@ -83,7 +86,7 @@ function Shopcontent() {
                                         else {
                                             return searchPost(e.target.value)
                                         }
-                                    }}                                  
+                                    }}
                                     placeholder={query}
                                     type="text" />
                                 <button>Search</button>
@@ -120,9 +123,8 @@ function Shopcontent() {
                                         falsePrice: falsePrice,
                                         discount: discount
                                     }
-
                                     return <>
-                                        <Bookbox bookContent={bookContent} />
+                                        <Bookbox bookContent={bookContent}/>
                                     </>
                                 })
                             }

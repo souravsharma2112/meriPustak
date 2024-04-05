@@ -5,6 +5,7 @@
     cursor: pointer;
 }
 @media only screen and (max-width: 480px){
+
     .center-cl-nav,
     .right-cl-nav{
         display: none;
@@ -178,5 +179,23 @@
     } 
     .cs{
         padding-bottom: 0rem !important ;
+    }
+    th{
+        font-size: .8rem !important;
+    }
+    td{
+        font-size: .8rem !important;
+        padding: .2rem !important;
+        width: 30% !important;
+    }
+    td button{
+        padding: .1rem .4rem !important;
+        border-radius: 12px !important;
+    }
+    td span{
+        padding: .2rem !important;
+    }
+    .name-product{
+        font-size: .8rem !important;
     }
 }

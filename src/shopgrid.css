@@ -37,6 +37,7 @@
 }
 .categories-menu-li:hover{
     color: var(--secondary-color);
+    cursor: pointer;
 }
 .shop-grid-right-menu{
     border-top: 1px solid #808080;

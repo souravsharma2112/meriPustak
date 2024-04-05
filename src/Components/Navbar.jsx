@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logoImg from "../assets/img/2112.png";
+import { useSelector } from 'react-redux'
 function Navbar() {
+    const cartItem = useSelector((state) => state.addcart.value)
+    const wishItem = useSelector((state) => state.addwish.value)
     const [scrollingactive, setScrollingactive] = useState("");
     const [logoWidth, setLogoWidth] = useState("250px");
     window.addEventListener("scroll", function () {
@@ -67,7 +70,7 @@ function Navbar() {
                                     </div>
                                 </li>
                                 <li className="nav-li-menu">
-                                    <Link to="#">BOOKS</Link>
+                                    <NavLink to="/books">BOOKS</NavLink>
                                     <div className="meta_menu">
                                         <ul className="flex gap-20">
                                             <div className="categories">
@@ -119,7 +122,12 @@ function Navbar() {
                                     </div>
                                 </li>
                                 <li className="nav-li-menu">
-                                    <Link to="#">KIDS</Link>
+                                    <NavLink
+                                        to="/kids"
+                                        className={({ isActive }) => `
+                                            ${isActive ? "active" : ""}
+                                        `}
+                                    >KIDS</NavLink>
                                     <div className="meta_menu">
                                         <ul>
                                             <li>
@@ -135,30 +143,46 @@ function Navbar() {
                                     </div>
                                 </li>
                                 <li className="nav-li-menu">
-                                    <Link to="#">PAGES</Link>
+                                    <NavLink to="/comics">COMICS</NavLink>
                                 </li>
                                 <li className="nav-li-menu">
-                                    <Link to="#">BLOG</Link>
+                                    <NavLink to="/tech">TECH</NavLink>
                                 </li>
                                 <li className="nav-li-menu">
-                                    <Link to="#">CONTACT</Link>
+                                    <NavLink to="/cook">CHEF</NavLink>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div className="right-cl-nav">
                         <ul className="flex gap-4">
-                            <li className="nav-li-icon">
+                            {/* <li className="nav-li-icon">
                                 <span className="material-symbols-outlined">search</span>
+                            </li> */}
+
+                            <NavLink to="/wishlist">
+                                <button type="button" className="btn btn-primary position-relative p-1 flex justify-center items-center bg-blue-400">
+                                    <span className="material-symbols-outlined">
+                                        favorite
+                                    </span>
+                                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                        {(cartItem.length == 0) ? "" : cartItem.length}
+                                        <span className="visually-hidden ">unread messages</span>
+                                    </span>
+                                </button>
+                            </NavLink>
+                            <NavLink to="/cart"><li className="nav-li-icon">
+                                <button type="button" className="btn btn-primary position-relative p-1 flex justify-center items-center bg-blue-400">
+                                    <span className="material-symbols-outlined">
+                                        shopping_cart
+                                    </span>
+                                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                        {(wishItem.length == 0) ? "" : wishItem.length}
+                                        <span className="visually-hidden ">unread messages</span>
+                                    </span>
+                                </button>
                             </li>
-                            <li className="nav-li-icon">
-                                <span className="material-symbols-outlined">shopping_cart</span>
-                            </li>
-                            <li className="nav-li-icon">
-                                <span className="material-symbols-outlined">
-                                    account_circle
-                                </span>
-                            </li>
+                            </NavLink>
                         </ul>
                     </div>
                     <div className="mobile-cl-nav">
@@ -167,29 +191,57 @@ function Navbar() {
                                 menu
                             </span>
                         </button>
-                        <ul id="mobileMenu">
+                        <ul id="mobileMenu" className="remove">
                             <button className="closeBtn" onClick={toggleBtn2} >
                                 <span className="material-symbols-outlined text-2xl text-emerald-50">
                                     close
                                 </span></button>
                             <li className="nav-li-menu">
-                                <Link to="/">Home</Link>
+                                <NavLink to="/">Home</NavLink>
                             </li>
                             <li className="nav-li-menu">
-                                <Link to="/shop">Shop</Link>
+                                <NavLink to="/shop">Shop</NavLink>
                             </li>
                             <li className="nav-li-menu">
-                                <Link to="/book">Book</Link>
+                                <NavLink to="/books">Books</NavLink>
                             </li>
                             <li className="nav-li-menu">
-                                <Link to="/kids">Kids</Link>
+                                <NavLink to="/kids">Kids</NavLink>
                             </li>
                             <li className="nav-li-menu">
-                                <Link to="/">Pages</Link>
+                                <NavLink to="/comics">Comics</NavLink>
                             </li>
                             <li className="nav-li-menu">
-                                <Link to="/contact">Contact</Link>
+                                <NavLink to="/tech">Tech</NavLink>
                             </li>
+                            <li className="nav-li-menu pb-5">
+                                <NavLink to="/cook">Cook</NavLink>
+                            </li>
+                            <div className="flex gap-5 pb-9">
+                            <NavLink to="/wishlist">
+                                <button type="button" className="btn btn-primary position-relative p-1 flex justify-center items-center bg-blue-400">
+                                    <span className="material-symbols-outlined">
+                                        favorite
+                                    </span>
+                                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                        {(cartItem.length == 0) ? "" : cartItem.length}
+                                        <span className="visually-hidden ">unread messages</span>
+                                    </span>
+                                </button>
+                            </NavLink>
+                            <NavLink to="/cart"><li className="nav-li-icon">
+                                <button type="button" className="btn btn-primary position-relative p-1 flex justify-center items-center bg-blue-400">
+                                    <span className="material-symbols-outlined">
+                                        shopping_cart
+                                    </span>
+                                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                        {(wishItem.length == 0) ? "" : wishItem.length}
+                                        <span className="visually-hidden ">unread messages</span>
+                                    </span>
+                                </button>
+                            </li>
+                            </NavLink>
+                            </div>
                         </ul>
                     </div>
                 </nav>

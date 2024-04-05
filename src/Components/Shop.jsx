@@ -4,8 +4,8 @@ import Shopgrid from "./Shopgrid";
 
 function Shop() {
     return <>
-        <Shopgrid />
-        <Shopcontent />
+        <Shopgrid title="Shop" text="Everything is temporary but learning is permanent."/>
+        <Shopcontent dimand={"trending"} />
     </>
 }
 export default Shop;
